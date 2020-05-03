@@ -12,7 +12,7 @@ export class BoardCmpComponent implements OnInit {
   @Output() shuffle = new EventEmitter<any>();
 
   onShuffle(){
-    this.shuffle.emit('hi')
+    this.shuffle.emit()
   }
 
 
