@@ -1,4 +1,5 @@
 <section class="cards-container">
+  <button (click) ="onShuffle()">Shuffle</button>
   <div *ngFor="let card of cards" >
       <card-preview [card]="card"></card-preview>
   </div>

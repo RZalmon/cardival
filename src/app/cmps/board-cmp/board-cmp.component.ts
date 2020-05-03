@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 
 @Component({
@@ -8,6 +8,13 @@ import { Card } from 'src/app/models/card.model';
 })
 export class BoardCmpComponent implements OnInit {
   @Input() cards: Card[];
+
+  @Output() shuffle = new EventEmitter<any>();
+
+  onShuffle(){
+    this.shuffle.emit('hi')
+  }
+
 
   constructor() { }
 

@@ -11,6 +11,11 @@ import { Card } from 'src/app/models/card.model';
 export class RoomPageComponent implements OnInit {
   cards: Card[] = null
 
+  shuffle(ev){
+    this.cardService.shuffle(this.cards)
+    console.log(ev);
+  }
+
   constructor(private cardService: CardService) { }
 
   ngOnInit(): void {

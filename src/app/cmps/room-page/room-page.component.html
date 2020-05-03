@@ -1,2 +1,2 @@
 <player-preview></player-preview>
-<board-cmp *ngIf="cards" [cards]="cards"></board-cmp>
+<board-cmp *ngIf="cards" [cards]="cards" (shuffle)="shuffle($event)"></board-cmp>
