@@ -2,11 +2,12 @@ export class Card {
     constructor(
         public value: number,
         public suit: string,
+        public name: string,
+        public loc: string = 'deck',
         public isShown?: boolean,
-        public loc?: string,
         public imgUrl?: string,
         public _id?: string,
-        ) { }
+    ) { }
 
     setId?(length = 7) {
         var _id = '';

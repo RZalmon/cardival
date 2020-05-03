@@ -7,6 +7,7 @@ import { RoomPageComponent } from './pages/room-page/room-page.component';
 import { BoardCmpComponent } from './cmps/board-cmp/board-cmp.component';
 import { CardPreviewComponent } from './cmps/card-preview/card-preview.component';
 import { PlayerPreviewComponent } from './cmps/player-preview/player-preview.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PlayerPreviewComponent } from './cmps/player-preview/player-preview.com
     RoomPageComponent,
     BoardCmpComponent,
     CardPreviewComponent,
-    PlayerPreviewComponent
+    PlayerPreviewComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
