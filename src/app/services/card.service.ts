@@ -7,6 +7,7 @@ import { Card } from '../models/card.model';
 export class CardService {
 
   constructor() { }
+  names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
   suits = ["spades", "diamonds", "clubs", "hearts"];
   values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
@@ -14,7 +15,7 @@ export class CardService {
     var deck = new Array();
     for (let i = 0; i < this.suits.length; i++) {
       for (let x = 0; x < this.values.length; x++) {
-        var card = new Card(this.values[x], this.suits[i])
+        var card = new Card(this.values[x], this.suits[i], this.names[x])
         card.setId()
         deck.push(card);
       }
