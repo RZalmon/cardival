@@ -1,3 +1,8 @@
 <h1>WELCOME TO CARDIVAL!</h1>
-<Button (click)="changePageState(1)">Create Game</Button>
-<Button (click)="changePageState(2)">Join Game</Button>
+<Button (click)="hostRoom()">Create Game</Button>
+<Button (click)="toggleJoinRoom()">Join Game</Button>
+
+<form *ngIf="isJoinShown" (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="roomId" name="roomId" />
+    <Button>GO</Button>
+</form>

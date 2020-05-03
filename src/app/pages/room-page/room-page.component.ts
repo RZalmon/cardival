@@ -1,33 +1,39 @@
+import { SocketService } from './../../services/socket.service';
 import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../services/card.service';
 import { Card } from 'src/app/models/card.model';
 import { Player } from 'src/app/models/player.model';
 
-
 @Component({
   selector: 'room-page',
   templateUrl: './room-page.component.html',
-  styleUrls: ['./room-page.component.scss']
+  styleUrls: ['./room-page.component.scss'],
 })
 export class RoomPageComponent implements OnInit {
   cards: Card[] = []
   players: Player[] = []
 
-  constructor(private cardService: CardService) { }
+  constructor(
+    private cardService: CardService,
+    private socketService: SocketService
+  ) { }
 
   ngOnInit(): void {
     this.cards = this.cardService.getDeck()
     this.cardService.shuffle(this.cards)
     this.createDemoPlayers()
+    this.socketService.setup()
+    this.socketService.emit('entering room', this.cards)
   }
 
-  shuffle(ev){
+  shuffle(ev) {
     this.cardService.shuffle(this.cards)
   }
 
-  createDemoPlayers(){
-    let player1 = {name: 'PLAYER1', _id: '1234'}
-    let player2 = {name: 'PLAYER2', _id: '5678'}
+  createDemoPlayers() {
+    let player1 = { name: 'PLAYER1', _id: '1234' }
+    let player2 = { name: 'PLAYER2', _id: '5678' }
     this.players.push(this.cardService.createPlayer(player1), this.cardService.createPlayer(player2))
+
   }
 }

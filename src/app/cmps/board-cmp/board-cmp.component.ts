@@ -16,7 +16,7 @@ export class BoardCmpComponent implements OnInit {
   }
 
   onShuffle(){
-    this.shuffle.emit('hi')
+    this.shuffle.emit()
   }
   
 }
