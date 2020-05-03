@@ -13,6 +13,8 @@ export class RoomPageComponent implements OnInit {
 
   shuffle() {
     this.cardService.shuffle(this.cards);
+    this.socketService.setup()
+    this.socketService.emit('shuffeling', this.cards)
   }
 
   constructor(
@@ -24,6 +26,8 @@ export class RoomPageComponent implements OnInit {
     this.cards = this.cardService.getDeck();
     this.cardService.shuffle(this.cards);
     this.socketService.setup()
+    this.socketService.on('shuffled cards', cards =>{
+      this.cards = cards})
     this.socketService.emit('entering room', this.cards)
 
   }
