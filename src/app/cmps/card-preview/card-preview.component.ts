@@ -9,15 +9,13 @@ import { Card } from 'src/app/models/card.model';
 export class CardPreviewComponent implements OnInit {
   @Input() card: Card;
 
+get suit(){
+  return `./assets/img/${this.card.suit}.svg`;
+}
+
   constructor() { }
-
-  get suit() {
-    return `./assets/img/${this.card.suit}.svg`
-  }
-
   ngOnInit(): void {
-    console.log(this.card);
-
+    
   }
 
 }
