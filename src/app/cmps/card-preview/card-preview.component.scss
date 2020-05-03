@@ -1,5 +1,9 @@
 .card-preview{
     border: 1px solid black;
-    width: fit-content;
-    margin-bottom: 5px;
+    width: 60px;
+    height: auto;
+    margin: 5px;
+    .card-suit{
+      width: 1rem;
+    }
 }
