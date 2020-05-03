@@ -13,6 +13,8 @@ export class RoomPageComponent implements OnInit {
   cards: Card[] = []
   players: Player[] = []
 
+
+
   constructor(
     private cardService: CardService,
     private socketService: SocketService
@@ -23,13 +25,17 @@ export class RoomPageComponent implements OnInit {
     this.cardService.shuffle(this.cards)
     this.createDemoPlayers()
     this.socketService.setup()
+    this.socketService.on('shuffled cards', cards => {
+      this.cards = cards
+    })
     this.socketService.emit('entering room', this.cards)
   }
 
-  shuffle(ev) {
-    this.cardService.shuffle(this.cards)
+  shuffle() {
+    this.cardService.shuffle(this.cards);
+    this.socketService.setup()
+    this.socketService.emit('shuffeling', this.cards)
   }
-
   createDemoPlayers() {
     let player1 = { name: 'PLAYER1', _id: '1234' }
     let player2 = { name: 'PLAYER2', _id: '5678' }
