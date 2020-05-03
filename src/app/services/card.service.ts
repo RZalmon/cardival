@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/card.model';
+import { Player } from '../models/player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,8 @@ export class CardService {
       deck[location1] = deck[location2];
       deck[location2] = tmp;
     }
+  }
+  public createPlayer(user){
+    return new Player(user.name, user._id)
   }
 }

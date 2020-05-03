@@ -1,4 +1,12 @@
-.cards-container{
+.board-cmp {
   display: flex;
   flex-wrap: wrap;
+
+  .deck {
+    position: relative;
+
+    card-preview {
+      position: absolute;
+    }
+  }
 }

@@ -17,8 +17,4 @@ export class Card {
         }
         this._id = _id;
     }
-
-    // setImg?(){
-    //     this.imgUrl =  this.value + this.suit
-    // }
 }
