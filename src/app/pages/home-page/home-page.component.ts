@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  pageState = 0
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changePageState(num: number): void {
+    this.pageState = num
+    console.log('this.pageState:', this.pageState)
   }
 
 }
