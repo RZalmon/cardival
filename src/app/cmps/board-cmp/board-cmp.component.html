@@ -1,6 +1,6 @@
 <section class="board-cmp">
   <button (click) ="onShuffle()">Shuffle</button>
   <div class="deck" *ngFor="let card of cards" >
-      <card-preview [card]="card" [cards]="cards" *ngIf="cards"></card-preview>
+      <card-preview [card]="card" [zIndex]="zIndex" *ngIf="cards && zIndex" (onUpdateZIndex)="onUpdateZIndex()"></card-preview>
   </div>
 </section>
