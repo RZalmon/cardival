@@ -8,10 +8,13 @@ import { Card } from 'src/app/models/card.model';
 })
 export class BoardCmpComponent implements OnInit {
   @Input() cards: Card[];
+  zIndex = 1
   @Output() shuffle = new EventEmitter<any>();
   
   constructor() { }
-
+onUpdateZIndex(){  
+  this.zIndex++
+}
   ngOnInit(): void {    
   }
 
