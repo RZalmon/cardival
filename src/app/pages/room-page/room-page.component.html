@@ -2,5 +2,5 @@
     <div  *ngFor="let player of players" class="players-container">
         <player-preview [player]="player"></player-preview>
     </div>
-    <board-cmp *ngIf="cards.length" [cards]="cards" (shuffle)="shuffle($event)"></board-cmp>
+    <board-cmp *ngIf="cards.length" [cards]="cards" (shuffle)="shuffle()"></board-cmp>
 </section>
