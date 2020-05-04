@@ -23,7 +23,6 @@ get suit(){
 
 onDragStart(card, ev) {
   console.log(this.zIndex);
-  debugger
  // console.log('here')
   ev.target.style.zIndex = this.zIndex + ''
   this.zIndex++
