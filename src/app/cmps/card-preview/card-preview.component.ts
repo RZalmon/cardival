@@ -15,21 +15,28 @@ export class CardPreviewComponent implements OnInit {
   currCard:Card = null
   mouseX:number = null;
   mouseY:number = null;
+  zIndex:number = 1
 
 get suit(){
   return `./assets/img/${this.card.suit}.svg`;
 }
 
 onDragStart(card, ev) {
+  console.log(this.zIndex);
+  debugger
+ // console.log('here')
+  ev.target.style.zIndex = this.zIndex + ''
+  this.zIndex++
+  console.log(this.zIndex);
   window.addEventListener('mousemove', this.onMouseMove)
 }
 
-onDragOver(){ 
+onDragOver(ev){ 
+  // ev.target.style.zIndex = 2
   window.removeEventListener('mousemove', this.onMouseMove)
 }
 
-onMouseMove = (ev) => {
-    
+onMouseMove = (ev) => {  
   this.mouseX = ev.x
   this.mouseY = ev.y
   // this.socketService.emit('card move', {card:this.card,locX:this.mouseX, locY:this.mouseY})
@@ -38,7 +45,6 @@ onMouseMove = (ev) => {
   constructor(private socketService: SocketService,
     ) { }
   ngOnInit(): void {
-    
     this.socketService.on('card moved', ({card,locX,locY}) => {   
     
       // this.card = card      
