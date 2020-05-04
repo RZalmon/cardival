@@ -25,7 +25,7 @@ export class SocketService {
     this.socket.off(eventName, cb)
   }
 
-  public emit(eventName, data) {
+  public emit(eventName, data) {    
     this.socket.emit(eventName, data)
   }
 }

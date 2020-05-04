@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../services/card.service';
 import { Card } from 'src/app/models/card.model';
 import { Player } from 'src/app/models/player.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'room-page',
@@ -12,28 +13,34 @@ import { Player } from 'src/app/models/player.model';
 export class RoomPageComponent implements OnInit {
   cards: Card[] = []
   players: Player[] = []
+  roomId:number = null
 
 
 
   constructor(
     private cardService: CardService,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.socketService.setup()
+    this.route.params.subscribe(params => {
+      this.roomId = params.id
+    });
+    this.socketService.emit('entering-room', this.roomId)
     this.cards = this.cardService.getDeck()
     this.cardService.shuffle(this.cards)
     this.createDemoPlayers()
-    this.socketService.setup()
     this.socketService.on('shuffled cards', cards => {
+      console.log(cards);
+      
       this.cards = cards
     })
-    this.socketService.emit('entering room', this.cards)
   }
 
   shuffle() {
     this.cardService.shuffle(this.cards);
-    this.socketService.setup()
     this.socketService.emit('shuffeling', this.cards)
   }
   createDemoPlayers() {
