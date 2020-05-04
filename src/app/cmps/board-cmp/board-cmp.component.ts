@@ -12,10 +12,10 @@ export class BoardCmpComponent implements OnInit {
   
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
 
-  onShuffle(){
+  onShuffle(){    
     this.shuffle.emit()
   }
   

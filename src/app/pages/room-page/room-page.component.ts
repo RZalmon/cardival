@@ -32,9 +32,7 @@ export class RoomPageComponent implements OnInit {
     this.cards = this.cardService.getDeck()
     this.cardService.shuffle(this.cards)
     this.createDemoPlayers()
-    this.socketService.on('shuffled cards', cards => {
-      console.log(cards);
-
+    this.socketService.on('shuffled cards', cards => {      
       this.cards = cards
     })
   }
