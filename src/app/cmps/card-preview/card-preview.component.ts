@@ -23,8 +23,8 @@ get suit(){
 }
 
 onDragStart(card, ev) {
- // console.log('here')
-  ev.target.style.zIndex = this.zIndex + ''
+  console.log(ev); 
+  ev.target.offsetParent.style.zIndex = this.zIndex + ''
   this.onUpdateZIndex.emit()
   console.log(this.zIndex);
   window.addEventListener('mousemove', this.onMouseMove)
