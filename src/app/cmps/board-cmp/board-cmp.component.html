@@ -1,6 +1,6 @@
 <section class="board-cmp">
   <button (click) ="onShuffle()">Shuffle</button>
   <div class="deck" *ngFor="let card of cards" >
-      <card-preview [card]="card"></card-preview>
+      <card-preview [card]="card" [cards]="cards" *ngIf="cards"></card-preview>
   </div>
 </section>
