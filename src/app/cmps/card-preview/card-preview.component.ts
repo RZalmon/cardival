@@ -1,5 +1,5 @@
 import { SocketService } from './../../services/socket.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 
 
@@ -16,6 +16,12 @@ export class CardPreviewComponent implements OnInit {
   @Output() onUpdateZIndex = new EventEmitter<any>();
   @Output() onChangeMoveState = new EventEmitter<any>();
 
+  // @ViewChild('boardCmp') boardCmp: any;
+  // @ViewChild('cardPreview') cardPreview: any;
+
+  // boardPos = document.querySelector('.board-cmp').getBoundingClientRect()
+  // childPos = document.querySelector('.card-preview').getBoundingClientRect()
+  relativePos = {};
   currCard: Card
   mouseX: number = null;
   mouseY: number = null;
@@ -46,7 +52,7 @@ export class CardPreviewComponent implements OnInit {
 
   onMouseMove = (ev) => {
     if (!this.isMoving) return
-    console.log('TESTTTT',ev);
+    console.log('TESTTTT', ev);
     this.mouseX = ev.layerX
     this.mouseY = ev.layerY
     this.socketService.emit('card move', { card: this.card, locX: this.mouseX, locY: this.mouseY })
@@ -57,7 +63,6 @@ export class CardPreviewComponent implements OnInit {
   constructor(private socketService: SocketService,
   ) { }
   ngOnInit(): void {
-
     this.socketService.on('card moved', ({ card, locX, locY }) => {
       this.currCard = this.cards.find(currCard => {
         return currCard._id === card._id
