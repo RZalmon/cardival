@@ -44,8 +44,8 @@ onDragOver(ev){
 onMouseMove = (ev) => {      
   console.log(ev);
   
-  this.mouseX = ev.layerX
-  this.mouseY = ev.layerY
+  this.mouseX = ev.x
+  this.mouseY = ev.y
   this.socketService.emit('card move', {card:this.card,locX:this.mouseX, locY:this.mouseY})
 }
 
@@ -61,7 +61,7 @@ onMouseMove = (ev) => {
       })
       //  this.dragPosition = this.currCard.dragPosition 
       if(this.currCard){
-        this.currCard.dragPosition = {x:locX,y:locY}
+        this.currCard.dragPosition = {x:locX -250,y:locY -150 }
       }
       })
   }
