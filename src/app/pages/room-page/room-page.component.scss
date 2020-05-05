@@ -1,10 +1,39 @@
-// .room-page {
-//     display: grid;
-//     grid-template-columns: 1fr 3fr 1fr;
-//     grid-template-rows: repeat(4, 1fr);
-//     grid-template-areas:
-//         ". player ."
-//         "player board player"
-//         "player board player"
-//         ". player .";
-// }
+
+
+.room-page {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+      ". player2 ."
+      "player3 board player4"
+      "player5 board player6"
+      ". player1 .";
+  .board{
+    grid-area: board;
+  }
+
+  .PLAYER1{
+    grid-area: player1;
+  }
+  .PLAYER2{
+    grid-area: player2;
+  }
+  .PLAYER3{
+    grid-area: player3;
+  }
+  .PLAYER4{
+    grid-area: player4;
+  }
+  .PLAYER5{
+    grid-area: player5;
+  }
+  .PLAYER6{
+    grid-area: player6;
+  }
+
+  .players-container{
+    display: flex;
+  }
+}
+

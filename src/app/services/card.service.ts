@@ -37,6 +37,6 @@ export class CardService {
     }
   }
   public createPlayer(user){
-    return new Player(user.name, user._id)
+    return new Player(user.name, user.boardLocation ,user._id)
   }
 }

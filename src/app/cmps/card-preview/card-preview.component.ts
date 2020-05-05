@@ -15,7 +15,7 @@ export class CardPreviewComponent implements OnInit {
   @Output() onUpdateZIndex = new EventEmitter<any>();
 
 
-  currCard:Card = this.card
+  currCard:Card 
   mouseX:number = null;
   mouseY:number = null;
   dragPosition = {x: 0, y: 0};
@@ -25,33 +25,27 @@ get suit(){
 }
 
 onDragStart(card, ev) {
-<<<<<<< HEAD
-  console.log(ev); 
   if (ev.target.localName === 'h2' || ev.target.localName === 'img') ev.target.offsetParent.style.zIndex = this.zIndex + '' //PLASTER
   else ev.target.style.zIndex = this.zIndex + ''
-=======
-  ev.target.offsetParent.style.zIndex = this.zIndex + ''
->>>>>>> ba24cab7c93cefdcbb874571292cd9ad917357a3
   this.onUpdateZIndex.emit()
   window.addEventListener('mousemove', this.onMouseMove)
 }
 
 onDragOver(ev){   
   this.currCard = null
-  window.removeEventListener('mousemove', ()=>{
-    console.log('removed!');
-    this.socketService.off('card move',()=>{
-      console.log('card moveeee');
-      
-    })
-  })  
+  window.removeEventListener('mousemove',this.onMouseMove, false)
+  this.socketService.off('card move',()=>{
+    console.log('card moveeee');
+})  
   
 }
 
 
-onMouseMove = (ev) => {    
-  this.mouseX = ev.clientX
-  this.mouseY = ev.clientY
+onMouseMove = (ev) => {      
+  console.log(ev);
+  
+  this.mouseX = ev.layerX
+  this.mouseY = ev.layerY
   this.socketService.emit('card move', {card:this.card,locX:this.mouseX, locY:this.mouseY})
 }
 
