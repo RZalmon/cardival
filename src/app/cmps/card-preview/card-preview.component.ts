@@ -1,5 +1,5 @@
 import { SocketService } from './../../services/socket.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 
 
@@ -9,6 +9,10 @@ import { Card } from 'src/app/models/card.model';
   styleUrls: ['./card-preview.component.scss']
 })
 export class CardPreviewComponent implements OnInit {
+
+  constructor(private socketService: SocketService,
+    ) { }
+  @ViewChild('cardPreview') cardPreview;
   @Input() card: Card;
   @Input() cards: Card[];
   @Input() zIndex: number;
@@ -20,6 +24,9 @@ export class CardPreviewComponent implements OnInit {
   mouseX: number = null;
   mouseY: number = null;
   dragPosition = { x: 0, y: 0 };
+  boardPos = document.querySelector('.board-cmp').getBoundingClientRect()
+
+
 
   get suit() {
     return `./assets/img/${this.card.suit}.svg`;
@@ -44,9 +51,10 @@ export class CardPreviewComponent implements OnInit {
   }
 
 
-  onMouseMove = (ev) => {
+  onMouseMove = (ev) => {  
+    console.log(this.cardPreview.nativeElement.getBoundingClientRect().left);
+      
     if (!this.isMoving) return
-    console.log('TESTTTT',ev);
     this.mouseX = ev.layerX
     this.mouseY = ev.layerY
     this.socketService.emit('card move', { card: this.card, locX: this.mouseX, locY: this.mouseY })
@@ -54,33 +62,17 @@ export class CardPreviewComponent implements OnInit {
 
 
 
-  constructor(private socketService: SocketService,
-  ) { }
+ 
   ngOnInit(): void {
-
+    
     this.socketService.on('card moved', ({ card, locX, locY }) => {
       this.currCard = this.cards.find(currCard => {
         return currCard._id === card._id
       })
-      //  this.dragPosition = this.currCard.dragPosition
       if (this.currCard) {
-        this.currCard.dragPosition = { x: locX, y: locY }
+        this.currCard.dragPosition = { x: locX -30, y: locY -50 }
       }
     })
   }
 
 }
-
-// onDragOver(ev) {
-//   console.log('invoked!');
-
-//   this.currCard = null
-//   window.removeEventListener('mousemove', () => {
-//     console.log('removed!');
-//     this.socketService.off('card move', () => {
-//       console.log('card moveeee');
-
-//     })
-//   })
-
-// }
