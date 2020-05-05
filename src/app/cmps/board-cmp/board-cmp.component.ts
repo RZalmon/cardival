@@ -9,6 +9,7 @@ import { Card } from 'src/app/models/card.model';
 export class BoardCmpComponent implements OnInit {
   @Input() cards: Card[];
   zIndex = 1
+  isMoving: boolean;
   @Output() shuffle = new EventEmitter<any>();
 
   constructor() { }
@@ -20,6 +21,12 @@ export class BoardCmpComponent implements OnInit {
 
   onShuffle() {
     this.shuffle.emit()
+  }
+  handleStopMove() {
+    this.isMoving = false;
+  }
+  handleChangeMove(ev) {
+    this.isMoving = ev;
   }
 
 }
