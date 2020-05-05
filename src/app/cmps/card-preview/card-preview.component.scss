@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .card-preview {
   border: 1px solid black;
   width: 60px;
@@ -9,3 +10,19 @@
     width: 1rem;
   }
 }
+=======
+.card-preview{
+    border: 1px solid black;
+    width: 60px;
+    height: auto;
+    margin: 5px;
+    background-color: white;
+    position: relative;
+    h2{
+      width: 100%;
+    }
+    .card-suit{
+      width: 1rem;
+    }
+}
+>>>>>>> ba24cab7c93cefdcbb874571292cd9ad917357a3
