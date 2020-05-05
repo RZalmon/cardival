@@ -1,4 +1,4 @@
 <section class="card-preview" cdkDrag (mouseup)="onDragOver($event)" (mousedown)="onDragStart(card, $event)">
-    <h2 (mouseup)="onDragOver($event)" (mousedown)="onDragStart(card, $event)">{{card.name}}</h2>
-    <img (mouseup)="onDragOver($event)" (mousedown)="onDragStart(card, $event)" [src]="suit" alt="" class="card-suit">
+    <h2>{{card.name}}</h2>
+    <img [src]="suit" alt="" class="card-suit">
 </section>
