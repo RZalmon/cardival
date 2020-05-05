@@ -32,7 +32,6 @@ onDragStart(card, ev) {
 
 onDragOver(ev){   
   this.currCard = null
-
   window.removeEventListener('mousemove', ()=>{
     console.log('removed!');
     this.socketService.off('card move',()=>{
