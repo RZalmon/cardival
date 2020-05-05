@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RoomPageComponent implements OnInit {
   cards: Card[] = []
   players: Player[] = []
-  roomId:number = null
+  roomId: number = null
 
 
 
@@ -44,7 +44,15 @@ export class RoomPageComponent implements OnInit {
   createDemoPlayers() {
     let player1 = { name: 'PLAYER1', _id: '1234' }
     let player2 = { name: 'PLAYER2', _id: '5678' }
-    this.players.push(this.cardService.createPlayer(player1), this.cardService.createPlayer(player2))
-
+    let player3 = { name: 'PLAYER3', _id: 'abcd' }
+    let player4 = { name: 'PLAYER4', _id: 'dcba' }
+    let player5 = { name: 'PLAYER5', _id: 'efgh' }
+    let player6 = { name: 'PLAYER6', _id: 'hgfe' }
+    this.players.push(this.cardService.createPlayer(player1),
+      this.cardService.createPlayer(player2),
+      this.cardService.createPlayer(player3),
+      this.cardService.createPlayer(player4),
+      this.cardService.createPlayer(player5),
+      this.cardService.createPlayer(player6))
   }
 }

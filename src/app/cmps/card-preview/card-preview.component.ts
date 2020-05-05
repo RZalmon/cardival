@@ -25,7 +25,13 @@ get suit(){
 }
 
 onDragStart(card, ev) {
+<<<<<<< HEAD
+  console.log(ev); 
+  if (ev.target.localName === 'h2' || ev.target.localName === 'img') ev.target.offsetParent.style.zIndex = this.zIndex + '' //PLASTER
+  else ev.target.style.zIndex = this.zIndex + ''
+=======
   ev.target.offsetParent.style.zIndex = this.zIndex + ''
+>>>>>>> ba24cab7c93cefdcbb874571292cd9ad917357a3
   this.onUpdateZIndex.emit()
   window.addEventListener('mousemove', this.onMouseMove)
 }

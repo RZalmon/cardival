@@ -9,6 +9,7 @@ import { BoardCmpComponent } from './cmps/board-cmp/board-cmp.component';
 import { CardPreviewComponent } from './cmps/card-preview/card-preview.component';
 import { PlayerPreviewComponent } from './cmps/player-preview/player-preview.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,6 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     AppRoutingModule,
     FormsModule,
     DragDropModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
