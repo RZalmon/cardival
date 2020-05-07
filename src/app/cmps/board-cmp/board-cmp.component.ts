@@ -17,6 +17,7 @@ export class BoardCmpComponent implements OnInit {
     this.zIndex++
   }
   ngOnInit(): void {
+    
   }
 
   onShuffle() {
