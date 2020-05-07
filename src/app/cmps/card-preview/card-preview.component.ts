@@ -32,11 +32,11 @@ export class CardPreviewComponent implements OnInit {
     window.addEventListener('mousemove', this.onMouseMove)
   }
   onDragOver(ev) {
-    console.log('top:', this.cardPreview.nativeElement.getBoundingClientRect().top - this.boardPos.top);
-    console.log('right:', this.cardPreview.nativeElement.getBoundingClientRect().right - this.boardPos.right);
-    console.log('bottom:', this.cardPreview.nativeElement.getBoundingClientRect().bottom - this.boardPos.bottom);
-    console.log('left:', this.cardPreview.nativeElement.getBoundingClientRect().left - this.boardPos.left);
-    console.log('--------------');
+    // console.log('top:', this.cardPreview.nativeElement.getBoundingClientRect().top - this.boardPos.top);
+    // console.log('right:', this.cardPreview.nativeElement.getBoundingClientRect().right - this.boardPos.right);
+    // console.log('bottom:', this.cardPreview.nativeElement.getBoundingClientRect().bottom - this.boardPos.bottom);
+    // console.log('left:', this.cardPreview.nativeElement.getBoundingClientRect().left - this.boardPos.left);
+    // console.log('--------------');
     this.onChangeMoveState.emit(false)
     this.currCard = null
     window.removeEventListener('mousemove', this.onMouseMove, false)
@@ -50,17 +50,21 @@ export class CardPreviewComponent implements OnInit {
     // console.log('bottom:', this.cardPreview.nativeElement.getBoundingClientRect().bottom - this.boardPos.bottom);
     // console.log('left:', this.cardPreview.nativeElement.getBoundingClientRect().left - this.boardPos.left);
     if (!this.isMoving) return
+    console.log('ha!');
+    
     this.mouseX = this.cardPreview.nativeElement.getBoundingClientRect().left - this.boardPos.left
     this.mouseY = this.cardPreview.nativeElement.getBoundingClientRect().top - this.boardPos.top
     this.socketService.emit('card move', { card: this.card, locX: this.mouseX, locY: this.mouseY })
   }
   ngOnInit(): void {
     this.socketService.on('card moved', ({ card, locX, locY }) => {
+      // console.log('X:', locX, 'Y:', locY);
       this.currCard = this.cards.find(currCard => {
         return currCard._id === card._id
       })
+      // console.log('CC', this.currCard);
       if (this.currCard) {
-        this.currCard.dragPosition = { x: locX - 30, y: locY - 50 }
+        this.currCard.dragPosition = { x: locX - 62, y: locY - 5 }
       }
     })
   }
