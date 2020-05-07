@@ -37,7 +37,9 @@ export class CardPreviewComponent implements OnInit {
     //PLASTER
     else ev.target.style.zIndex = this.zIndex + '';
     this.onUpdateZIndex.emit();
-    window.addEventListener('mousemove', this.onMouseMove);
+    window.addEventListener('mousemove', () => {
+      this.onMouseMove(card);
+    });
   }
   onDragOver(ev) {
     this.onChangeMoveState.emit(false);
@@ -47,11 +49,7 @@ export class CardPreviewComponent implements OnInit {
       console.log('card moveeee');
     });
   }
-  onMouseMove = (ev) => {
-    // console.log('top:', this.cardPreview.nativeElement.getBoundingClientRect().top - this.boardPos.top);
-    // console.log('right:', this.cardPreview.nativeElement.getBoundingClientRect().right - this.boardPos.right);
-    // console.log('bottom:', this.cardPreview.nativeElement.getBoundingClientRect().bottom - this.boardPos.bottom);
-    // console.log('left:', this.cardPreview.nativeElement.getBoundingClientRect().left - this.boardPos.left);
+  onMouseMove = (card) => {
     if (!this.isMoving) return;
     this.mouseX =
       this.cardPreview.nativeElement.getBoundingClientRect().left -
@@ -59,26 +57,29 @@ export class CardPreviewComponent implements OnInit {
     this.mouseY =
       this.cardPreview.nativeElement.getBoundingClientRect().top -
       this.boardPos.top;
+      if(!card.top){
+        card.top = this.mouseX
+      }
+      if(!card.left){
+        card.left = this.mouseY
+      }
     this.socketService.emit('card move', {
-      card: this.card,
+      card: card,
       locX: this.mouseX,
       locY: this.mouseY,
     });
   };
-
+  
 
   ngOnInit(): void {
-
     this.socketService.on('card moved', ({ card, locX, locY }) => {
       this.currCard = this.cards.find((currCard) => {
         return currCard._id === card._id;
       });
 
       if (this.currCard) {
-        console.log(this.currCard.dragPosition);
-        console.log(locX, '', locY);
-
-        this.currCard.dragPosition = { x: locX, y: locY };
+        
+        this.currCard.dragPosition = { x: locX - card.top, y: locY - card.left };
       }
     });
   }
@@ -93,12 +94,9 @@ export class CardPreviewComponent implements OnInit {
   //   };
 
   //   console.log(this.card);
-    
 
   // }
 }
-
-
 
 // import { SocketService } from './../../services/socket.service';
 // import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
