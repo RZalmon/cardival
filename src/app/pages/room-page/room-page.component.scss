@@ -35,3 +35,16 @@
         display: flex;
     }
 }
+// @media (max-width: 500px) {
+//     .room-page {
+//         display: grid;
+//         grid-template-columns: 1fr 300px 1fr;
+//         grid-template-rows: repeat(5, 100px);
+//         grid-template-areas:
+//             ". player2 ."
+//             "player3 board player4"
+//             "player5 board player6"
+//             ". board ."
+//             ". player1 .";
+//     }
+// }

@@ -1,15 +1,29 @@
-.card-preview{
-    border: 1px solid black;
-    width: 50px;
-    height: auto;
-    margin: 5px;
-    background-color: white;
-    position: relative;
-    h2{
-      width: 100%;
-      font-size: 1rem;
-    }
-    .card-suit{
-      width: 1rem;
-    }
+.card-preview {
+  border: 1px solid black;
+  width: 50px;
+  height: auto;
+  margin: 5px;
+  background-color: white;
+  position: relative;
+  h2 {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .card-suit {
+    width: 1rem;
+  }
 }
+// @media (max-width: 500px) {
+//   .card-preview {
+//     width: 25px;
+//     height: auto;
+//     margin: 2.5px;
+//     h2 {
+//       width: 100%;
+//       font-size: 0.5rem;
+//     }
+//     .card-suit {
+//       width: 0.5rem;
+//     }
+//   }
+// }

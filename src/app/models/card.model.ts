@@ -7,7 +7,11 @@ export class Card {
         public isShown?: boolean,
         public imgUrl?: string,
         public _id?: string,
+        public top?:number,
+        public left?:number,
         public dragPosition:any = {x: 0, y: 0},
+        public zIndex?: number,
+        
     ) { }
 
     setId?(length = 7) {
