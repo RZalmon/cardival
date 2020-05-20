@@ -11,8 +11,13 @@ export class BoardCmpComponent implements OnInit {
   isMoving: boolean;
   @Output() shuffle = new EventEmitter<any>();
   constructor() { }
-  onUpdateZIndex() {
+  onIncZIndex() {
     this.zIndex++
+  }
+  onUpdateZIndex(zIndex) {
+    // console.log('socket Z-index', zIndex)
+    this.zIndex = zIndex
+    console.log('CURR Z-index', this.zIndex)
   }
   ngOnInit(): void {
   }

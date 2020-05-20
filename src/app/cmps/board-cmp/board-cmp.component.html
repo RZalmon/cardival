@@ -1,7 +1,7 @@
 <section class="board-cmp" (mouseleave)="handleStopMove()">
   <button (click) ="onShuffle()">Shuffle</button>
   <div class="deck" *ngFor="let card of cards" >
-      <card-preview  [card]="card" [cards]="cards" [zIndex]="zIndex" [isMoving]="isMoving" *ngIf="cards && zIndex" (onUpdateZIndex)="onUpdateZIndex()" (onChangeMoveState)="handleChangeMove($event)"></card-preview>
+      <card-preview  [card]="card" [cards]="cards" [zIndex]="zIndex" [isMoving]="isMoving" *ngIf="cards && zIndex" (onIncZIndex)="onIncZIndex()" (onUpdateZIndex)="onUpdateZIndex($event)" (onChangeMoveState)="handleChangeMove($event)"></card-preview>
   </div>
 </section>
 
