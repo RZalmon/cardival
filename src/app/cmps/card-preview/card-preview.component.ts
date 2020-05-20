@@ -22,6 +22,7 @@ export class CardPreviewComponent implements OnInit {
   @Input() isMoving: boolean;
   @Output() onUpdateZIndex = new EventEmitter<any>();
   @Output() onChangeMoveState = new EventEmitter<any>();
+  // @Output() onCardClicked = new EventEmitter<any>();
   currCard: Card;
   mouseX: number = null;
   mouseY: number = null;
@@ -66,19 +67,24 @@ export class CardPreviewComponent implements OnInit {
     this.socketService.emit('card move', {
       card: card,
       locX: this.mouseX,
-      locY: this.mouseY,
-      
+      locY: this.mouseY,   
     });
   };
   
 
-  ngOnInit(): void {
-    this.socketService.on('card moved', ({ card, locX, locY}) => {
+   ngOnInit(): void {
+    this.socketService.on( 'card moved', async ({ card, locX, locY}) => {
       this.currCard = this.cards.find((currCard) => {
         return currCard._id === card._id;
       });      
       if (this.currCard) {        
         this.currCard.dragPosition = { x: locX - card.top, y: locY - card.left };
+        let elCard =  await (<HTMLElement>document.querySelector(`.${this.currCard._id}`))
+        // console.log(this.zIndex);
+        if(elCard){
+          elCard.style.zIndex = this.zIndex + ''
+
+        }
       }
     });
   }
