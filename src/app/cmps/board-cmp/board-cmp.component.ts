@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
-
 @Component({
   selector: 'board-cmp',
   templateUrl: './board-cmp.component.html',
@@ -11,15 +10,12 @@ export class BoardCmpComponent implements OnInit {
   zIndex = 1
   isMoving: boolean;
   @Output() shuffle = new EventEmitter<any>();
-
   constructor() { }
   onUpdateZIndex() {
     this.zIndex++
   }
   ngOnInit(): void {
-    
   }
-
   onShuffle() {
     this.shuffle.emit()
   }
@@ -29,5 +25,4 @@ export class BoardCmpComponent implements OnInit {
   handleChangeMove(ev) {
     this.isMoving = ev;
   }
-
 }
